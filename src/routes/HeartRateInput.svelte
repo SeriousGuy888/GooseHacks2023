@@ -1,18 +1,13 @@
 <script>
-  import { heartRateStore } from "$lib/store";
-  let heartRate = 0;
-
-  heartRateStore.subscribe((value) => {
-    heartRate = value;
-  });
+  import { heartRate } from "$lib/store";
 </script>
 
 <section class="p-4 bg-slate-300 rounded-md">
   <h1>Heart Rate Input</h1>
-  <p>Current heartrate: {heartRate}</p>
+  <p>Current heartrate: {$heartRate}</p>
   <input
     type="range"
-    value={heartRate}
+    value={$heartRate}
     min="0"
     max="200"
     step="1"
@@ -20,7 +15,7 @@
       const target = e.target;
 
       // @ts-ignore
-      heartRateStore.set(target?.value);
+      heartRate.set(target?.value);
     }}
   />
 </section>
