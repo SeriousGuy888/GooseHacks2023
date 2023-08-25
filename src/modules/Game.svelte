@@ -7,6 +7,7 @@
   function startGame() {
     points.set(0);
     timeStarted = Date.now();
+    now = timeStarted;
 
     gameStarted = true;
   }
