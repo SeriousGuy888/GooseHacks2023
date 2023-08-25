@@ -13,4 +13,4 @@
 import { writable } from "svelte/store";
 
 export const heartRate = writable(0);
-export const pointsStore = writable(0);
+export const points = writable(0);
