@@ -13,6 +13,10 @@
    * @param {number} damage
    */
   function dealDamage(damage) {
+    if (isEnemyDying) {
+      return;
+    }
+
     enemyHealth -= damage;
 
     if (enemyHealth <= 0) {
@@ -48,7 +52,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <article class="rounded-md cursor-pointer" on:click={() => dealDamage(5)}>
   <!-- https://learn.svelte.dev/tutorial/bind-this -->
-  <Healthbar health={enemyHealth} maxHealth={enemy.maxHealth} />
+  <Healthbar health={enemyHealth} maxHealth={enemy.maxHealth} name={enemy.name} />
   <div
     id="enemy"
     class="sprite"
