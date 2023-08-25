@@ -1,24 +1,18 @@
 <script>
   import { points } from "$lib/store";
+  import { Enemy, enemies } from "./Enemy";
 
-  /**
-   * @type {HTMLDivElement}
-   */
-  let enemyHealthbar;
+  /** @type {HTMLDivElement} */ let enemyHealthbar;
+  /** @type {HTMLDivElement} */ let enemyHealthbarContent;
 
-  /**
-   * @type {HTMLDivElement}
-   */
-  let enemyHealthbarContent;
-
-  /**
-   * @type {number}
-   */
-  let enemyHealth = 100;
+  /** @type {Enemy} */
+  let enemy = enemies.normal;
+  let enemyHealth = enemy.maxHealth;
+  let enemyMaxHealth = enemy.maxHealth;
 
   $: {
     if (enemyHealthbarContent) {
-      enemyHealthbarContent.style.width = `${enemyHealth}%`;
+      enemyHealthbarContent.style.width = `${(enemyHealth / enemyMaxHealth) * 100}%`;
     }
   }
 
@@ -39,7 +33,14 @@
   }
 
   function spawnNewEnemy() {
-    enemyHealth = 100;
+    const key = Object.keys(enemies)[Math.floor(Math.random() * Object.keys(enemies).length)];
+
+    // @ts-ignore
+    enemy = enemies[key];
+    enemyHealth = enemy.maxHealth;
+    enemyMaxHealth = enemy.maxHealth;
+
+    console.log(`New enemy: ${key}`);
   }
 </script>
 
