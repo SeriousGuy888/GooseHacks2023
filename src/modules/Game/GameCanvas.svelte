@@ -48,9 +48,7 @@
   }
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<article class="rounded-md cursor-pointer" on:click={() => dealDamage(5)}>
+<article class="rounded-md">
   <div class="absolute w-full h-full bg-white opacity-80" />
 
   <!-- https://learn.svelte.dev/tutorial/bind-this -->
