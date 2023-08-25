@@ -18,7 +18,6 @@
     if (!gameStarted) return;
 
     now = Date.now();
-    points.update((p) => p + 1);
     $heartRateHistory = [...$heartRateHistory, $heartRate];
   }
 

@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+  import { points } from "$lib/store";
 
   /**
    * @type {HTMLDivElement}
@@ -12,16 +12,6 @@
   let enemyHealthbarContent;
 
   /**
-   * @type {HTMLDivElement}
-   */
-  let enemy;
-
-  /**
-   * @type {HTMLDivElement}
-   */
-  let player;
-
-  /**
    * @type {number}
    */
   let enemyHealth = 100;
@@ -31,17 +21,37 @@
       enemyHealthbarContent.style.width = `${enemyHealth}%`;
     }
   }
+
+  /**
+   * @param {number} damage
+   */
+  function dealDamage(damage) {
+    enemyHealth -= damage;
+
+    if (enemyHealth <= 0) {
+      enemyDeath();
+      spawnNewEnemy();
+    }
+  }
+
+  function enemyDeath() {
+    points.update((p) => p + 1);
+  }
+
+  function spawnNewEnemy() {
+    enemyHealth = 100;
+  }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-<article class="rounded-md cursor-pointer" on:click={() => enemyHealth--}>
+<article class="rounded-md cursor-pointer" on:click={() => dealDamage(5)}>
   <!-- https://learn.svelte.dev/tutorial/bind-this -->
   <div bind:this={enemyHealthbar} id="enemy-healthbar">
     <div bind:this={enemyHealthbarContent} id="healthbar-content" />
   </div>
-  <div bind:this={enemy} id="enemy" />
-  <div bind:this={player} id="player" />
+  <div id="enemy" />
+  <div id="player" />
 </article>
 
 <style lang="scss">
