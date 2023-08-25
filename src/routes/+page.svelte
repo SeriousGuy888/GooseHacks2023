@@ -1,5 +1,5 @@
 <script>
-  import Game from "../modules/Game.svelte";
+  import Game from "../modules/Game/Game.svelte";
   import HeartRateInput from "./HeartRateInput.svelte";
 </script>
 

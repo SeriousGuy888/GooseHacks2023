@@ -1,5 +1,6 @@
 <script>
   import { heartRate, points } from "$lib/store";
+    import GameCanvas from "./GameCanvas.svelte";
 
   let gameStarted = false;
   let timeStarted = 0;
@@ -23,19 +24,20 @@
 <section class="p-4 bg-slate-300 rounded-md">
   <h1>This is the game part</h1>
 
-  {#if gameStarted}
-    <div class="grid mt-4 gap-2">
+  <div class="grid mt-4 gap-2">
+    {#if gameStarted}
       <p>reading the heartrate from a different component: {$heartRate}</p>
       <p>Points: {$points}</p>
       <p>Seconds since start: {secondsSinceStart}</p>
       <hr />
-    </div>
-  {:else}
-    <button
-      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-      on:click={startGame}
-    >
-      Start Game
-    </button>
-  {/if}
+      <GameCanvas />
+    {:else}
+      <button
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        on:click={startGame}
+      >
+        Start Workout
+      </button>
+    {/if}
+  </div>
 </section>
