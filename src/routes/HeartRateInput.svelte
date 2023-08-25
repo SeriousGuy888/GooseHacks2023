@@ -1,5 +1,10 @@
 <script>
-  let heartRate = 80;
+  import { heartRateStore } from "$lib/store";
+  let heartRate = 0;
+
+  heartRateStore.subscribe((value) => {
+    heartRate = value;
+  });
 </script>
 
 <section class="p-4 bg-slate-300 rounded-md">
@@ -15,7 +20,7 @@
       const target = e.target;
 
       // @ts-ignore
-      heartRate = target?.value;
+      heartRateStore.set(target?.value);
     }}
   />
 </section>
