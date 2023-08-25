@@ -11,6 +11,7 @@
     min="0"
     max="200"
     step="1"
+    class="w-full"
     on:input={(e) => {
       const target = e.target;
 
