@@ -5,6 +5,9 @@
   let gameStarted = false;
   let timeStarted = 0;
 
+  /** @type {GameCanvas|undefined} */
+  let canvas;
+
   function startGame() {
     points.set(0);
     timeStarted = Date.now();
@@ -19,6 +22,11 @@
 
     now = Date.now();
     $heartRateHistory = [...$heartRateHistory, $heartRate];
+
+    if (canvas) {
+      const dmg = Math.round($heartRate / 10);
+      canvas.dealDamage(dmg);
+    }
   }
 
   let now = Date.now();
@@ -28,23 +36,17 @@
   startGame();
 </script>
 
-<section class="p-4 bg-slate-300 rounded-md">
-  <h1>This is the game part</h1>
-
-  <div class="grid mt-4 gap-2">
-    {#if gameStarted}
-      <p>reading the heartrate from a different component: {$heartRate}</p>
-      <p>Points: {$points}</p>
-      <p>Seconds since start: {secondsSinceStart}</p>
-      <hr />
-      <GameCanvas />
-    {:else}
+<section class="rounded-md overflow-clip grid gap-2">
+  {#if gameStarted}
+    <GameCanvas bind:this={canvas} />
+  {:else}
+    <div class="p-4 bg-slate-300">
       <button
         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
         on:click={startGame}
       >
         Start Workout
       </button>
-    {/if}
-  </div>
+    </div>
+  {/if}
 </section>

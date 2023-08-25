@@ -12,12 +12,12 @@
   /**
    * @param {number} damage
    */
-  function dealDamage(damage) {
+  export function dealDamage(damage) {
     if (isEnemyDying) {
       return;
     }
 
-    enemyHealth -= damage;
+    enemyHealth = Math.max(0, enemyHealth - damage);
 
     if (enemyHealth <= 0) {
       enemyDeath();
