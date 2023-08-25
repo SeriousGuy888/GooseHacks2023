@@ -21,6 +21,6 @@
   />
   <br />
   <p>
-    {JSON.stringify($heartRateHistory)}
+    {$heartRateHistory.join(", ")}
   </p>
 </section>

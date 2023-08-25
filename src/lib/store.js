@@ -12,7 +12,7 @@
 
 import { writable } from "svelte/store";
 
-export const heartRate = writable(0);
+export const heartRate = writable(80);
 export const heartRateHistory = writable([]);
 
 export const points = writable(0);

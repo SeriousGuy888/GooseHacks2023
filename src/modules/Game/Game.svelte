@@ -24,6 +24,9 @@
 
   let now = Date.now();
   $: secondsSinceStart = Math.floor((now - timeStarted) / 1000);
+
+  // TODO: remove this (for testing)
+  startGame();
 </script>
 
 <section class="p-4 bg-slate-300 rounded-md">
