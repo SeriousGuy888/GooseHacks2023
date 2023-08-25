@@ -14,8 +14,8 @@
 </script>
 
 <div id="healthbar-container">
-  <div class="grid grid-cols-2 select-none">
-    <span class="ml-4 uppercase font-bold tracking-wide text-lg opacity-75 text-left">{name}</span>
+  <div class="grid grid-cols-2 select-none whitespace-nowrap">
+    <span class="ml-4 uppercase font-bold tracking-wide opacity-75 text-left">{name}</span>
     <span class="text-right">{health}/{maxHealth} HP</span>
   </div>
   <div id="healthbar">
