@@ -57,6 +57,7 @@
     id="enemy"
     class="sprite"
     class:death-animation={isEnemyDying}
+    class:floating-animation={!isEnemyDying}
     style="background-image: url('{enemy.getSpriteSrc()}');"
   />
   <div id="player" class="sprite" />
@@ -124,6 +125,22 @@
       transform: scale(0);
       opacity: 0;
       rotate: 90deg;
+    }
+  }
+
+  .floating-animation {
+    animation: floating 2s ease-in-out infinite;
+  }
+
+  @keyframes floating {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10%);
+    }
+    100% {
+      transform: translateY(0);
     }
   }
 </style>
