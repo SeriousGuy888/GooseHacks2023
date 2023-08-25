@@ -5,7 +5,11 @@ export class Enemy {
    */
   constructor(maxHealth, sprite) {
     this.maxHealth = maxHealth;
-    this.sprite = "";
+    this.sprite = sprite;
+  }
+
+  getSpriteSrc() {
+    return `/sprites/enemies/${this.sprite}.png`
   }
 }
 

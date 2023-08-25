@@ -51,7 +51,7 @@
   <div bind:this={enemyHealthbar} id="enemy-healthbar">
     <div bind:this={enemyHealthbarContent} id="healthbar-content" />
   </div>
-  <div id="enemy" />
+  <div id="enemy" style="background-image: url('{enemy.getSpriteSrc()}');" />
   <div id="player" />
 </article>
 
@@ -94,7 +94,12 @@
   }
 
   #enemy {
-    background-color: orange;
+    // background-color: orange;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+
     width: 20%;
     aspect-ratio: 4/5;
 
