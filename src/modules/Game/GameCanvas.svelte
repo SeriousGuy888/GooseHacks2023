@@ -51,6 +51,8 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <article class="rounded-md cursor-pointer" on:click={() => dealDamage(5)}>
+  <div class="absolute w-full h-full bg-white opacity-80" />
+
   <!-- https://learn.svelte.dev/tutorial/bind-this -->
   <Healthbar health={enemyHealth} maxHealth={enemy.maxHealth} name={enemy.name} />
   <div
@@ -65,7 +67,12 @@
 
 <style lang="scss">
   article {
-    background-color: white;
+    // background-color: white;
+    // from https://unsplash.com/photos/LhlxYMfnTF0
+    background-image: url("/sprites/canvas_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
     width: 100%;
     aspect-ratio: 16/9;
 
