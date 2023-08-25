@@ -1,22 +1,13 @@
 <script>
   import { points } from "$lib/store";
   import { Enemy, enemies } from "./Enemy";
-
-  /** @type {HTMLDivElement} */ let enemyHealthbar;
-  /** @type {HTMLDivElement} */ let enemyHealthbarContent;
+  import Healthbar from "./Healthbar.svelte";
 
   /** @type {Enemy} */
   let enemy = enemies.normal;
   let enemyHealth = enemy.maxHealth;
-  let enemyMaxHealth = enemy.maxHealth;
 
   let isEnemyDying = false;
-
-  $: {
-    if (enemyHealthbarContent) {
-      enemyHealthbarContent.style.width = `${(enemyHealth / enemyMaxHealth) * 100}%`;
-    }
-  }
 
   /**
    * @param {number} damage
@@ -48,7 +39,6 @@
     // @ts-ignore
     enemy = enemies[key];
     enemyHealth = enemy.maxHealth;
-    enemyMaxHealth = enemy.maxHealth;
 
     console.log(`New enemy: ${key}`);
   }
@@ -58,9 +48,7 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <article class="rounded-md cursor-pointer" on:click={() => dealDamage(5)}>
   <!-- https://learn.svelte.dev/tutorial/bind-this -->
-  <div bind:this={enemyHealthbar} id="enemy-healthbar">
-    <div bind:this={enemyHealthbarContent} id="healthbar-content" />
-  </div>
+  <Healthbar health={enemyHealth} maxHealth={enemy.maxHealth} />
   <div
     id="enemy"
     class="sprite"
@@ -81,30 +69,6 @@
 
     & > * {
       position: absolute;
-    }
-  }
-
-  #enemy-healthbar {
-    background-color: white;
-    border: 2px solid black;
-
-    width: 50%;
-    height: 5%;
-
-    // Place at top of screen
-    top: 2.5%;
-
-    // Center horizontally
-    left: 0;
-    right: 0;
-    margin: auto;
-
-    // make rectangle into right leaning parallelogram
-    transform: skew(-45deg);
-
-    #healthbar-content {
-      background-color: red;
-      height: 100%;
     }
   }
 
