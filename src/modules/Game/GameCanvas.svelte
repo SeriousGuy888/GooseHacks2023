@@ -10,6 +10,8 @@
   let enemyHealth = enemy.maxHealth;
   let enemyMaxHealth = enemy.maxHealth;
 
+  let isEnemyDying = false;
+
   $: {
     if (enemyHealthbarContent) {
       enemyHealthbarContent.style.width = `${(enemyHealth / enemyMaxHealth) * 100}%`;
@@ -24,12 +26,20 @@
 
     if (enemyHealth <= 0) {
       enemyDeath();
-      spawnNewEnemy();
     }
   }
 
   function enemyDeath() {
+    // Add points
     points.update((p) => p + 1);
+
+    // Play death animation
+    isEnemyDying = true;
+    setTimeout(() => {
+      isEnemyDying = false;
+
+      spawnNewEnemy();
+    }, 500);
   }
 
   function spawnNewEnemy() {
@@ -51,7 +61,12 @@
   <div bind:this={enemyHealthbar} id="enemy-healthbar">
     <div bind:this={enemyHealthbarContent} id="healthbar-content" />
   </div>
-  <div id="enemy" class="sprite" style="background-image: url('{enemy.getSpriteSrc()}');" />
+  <div
+    id="enemy"
+    class="sprite"
+    class:death-animation={isEnemyDying}
+    style="background-image: url('{enemy.getSpriteSrc()}');"
+  />
   <div id="player" class="sprite" />
 </article>
 
@@ -125,5 +140,22 @@
     background-size: contain;
     background-repeat: no-repeat;
     image-rendering: pixelated;
+  }
+
+  .death-animation {
+    animation: death 500ms;
+  }
+
+  @keyframes death {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+      rotate: 0deg;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+      rotate: 90deg;
+    }
   }
 </style>
