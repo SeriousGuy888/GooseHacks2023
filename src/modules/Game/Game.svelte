@@ -1,6 +1,6 @@
 <script>
-  import { heartRate, points } from "$lib/store";
-    import GameCanvas from "./GameCanvas.svelte";
+  import { heartRate, heartRateHistory, points } from "$lib/store";
+  import GameCanvas from "./GameCanvas.svelte";
 
   let gameStarted = false;
   let timeStarted = 0;
@@ -13,11 +13,16 @@
     gameStarted = true;
   }
 
-  let now = Date.now();
-  setInterval(() => {
-    now = Date.now();
-  }, 1000);
+  setInterval(tickSecond, 1000);
+  function tickSecond() {
+    if (!gameStarted) return;
 
+    now = Date.now();
+    points.update((p) => p + 1);
+    $heartRateHistory = [...$heartRateHistory, $heartRate];
+  }
+
+  let now = Date.now();
   $: secondsSinceStart = Math.floor((now - timeStarted) / 1000);
 </script>
 

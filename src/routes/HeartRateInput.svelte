@@ -1,5 +1,5 @@
 <script>
-  import { heartRate } from "$lib/store";
+  import { heartRate, heartRateHistory } from "$lib/store";
 </script>
 
 <section class="p-4 bg-slate-300 rounded-md">
@@ -16,7 +16,11 @@
       const target = e.target;
 
       // @ts-ignore
-      heartRate.set(target?.value);
+      heartRate.set(target?.valueAsNumber);
     }}
   />
+  <br />
+  <p>
+    {JSON.stringify($heartRateHistory)}
+  </p>
 </section>
