@@ -1,9 +1,7 @@
 <script>
-  import { heartRate, heartRateHistory, points } from "$lib/store";
+  import { heartRate, heartRateHistory, isGameRunning, points } from "$lib/store";
   import HeartRateInput from "../../routes/HeartRateInput.svelte";
   import GameCanvas from "./GameCanvas.svelte";
-
-  let gameStarted = false;
   let timeStarted = 0;
 
   /** @type {GameCanvas|undefined} */
@@ -14,12 +12,12 @@
     timeStarted = Date.now();
     now = timeStarted;
 
-    gameStarted = true;
+    isGameRunning.set(true);
   }
 
   setInterval(tickSecond, 1000);
   function tickSecond() {
-    if (!gameStarted) return;
+    if (!$isGameRunning) return;
 
     now = Date.now();
     $heartRateHistory = [...$heartRateHistory, $heartRate];
@@ -35,7 +33,7 @@
 </script>
 
 <section class="rounded-md overflow-clip grid gap-2">
-  {#if gameStarted}
+  {#if $isGameRunning}
     <GameCanvas bind:this={canvas} />
     <HeartRateInput />
   {:else}

@@ -1,17 +1,22 @@
 <script>
+  import { isGameRunning } from "$lib/store";
   import NavLink from "./NavLink.svelte";
 
   import { Home, ChevronUp } from "lucide-svelte";
 </script>
 
-<nav class="grid grid-flow-col z-40 bg-red-900 text-white py-4">
-  <NavLink href="/" name="Home">
-    <Home />
-  </NavLink>
-  <NavLink href="/upgrades" name="Upgrades">
-    <ChevronUp />
-  </NavLink>
-</nav>
+{#if $isGameRunning}
+  <span class="absolute" />
+{:else}
+  <nav class="grid grid-flow-col z-40 bg-red-900 text-white py-4">
+    <NavLink href="/" name="Home">
+      <Home />
+    </NavLink>
+    <NavLink href="/upgrades" name="Upgrades">
+      <ChevronUp />
+    </NavLink>
+  </nav>
+{/if}
 
 <style lang="scss">
   nav {

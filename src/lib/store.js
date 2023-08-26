@@ -12,10 +12,15 @@
 
 import { derived, writable } from "svelte/store";
 
+export const isGameRunning = writable(false);
+
+
 export const heartRate = writable(80);
 export const heartRateHistory = writable([]);
 
 export const points = writable(0);
+
+
 
 // the currency used for upgrades
 export const gold = writable(1000);
