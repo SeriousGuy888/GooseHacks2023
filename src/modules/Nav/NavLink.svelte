@@ -5,13 +5,18 @@
   /** @type {string} */ export let href;
   /** @type {string} */ export let name;
 
-  function isActive() {
-    return $page.url.pathname === href;
-  }
+  let isActive = false;
+  page.subscribe((p) => {
+    if (p.url.pathname === href) {
+      isActive = true;
+    } else {
+      isActive = false;
+    }
+  });
 </script>
 
 <a {href}>
-  <div class="px-4 flex flex-col items-center flex-1" class:active={isActive()}>
+  <div class="px-4 flex flex-col items-center flex-1" class:active={isActive}>
     <!-- icon -->
     <slot />
     <span class="text-sm">
