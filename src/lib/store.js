@@ -10,10 +10,17 @@
     $heartRate // automatically update when the store is updated.
 */
 
+import { page } from "$app/stores"
 import { derived, writable } from "svelte/store";
 
+// Tracks if the game is running or not.
+// Automatically set to false when the user navigates away from the game.
 export const isGameRunning = writable(false);
-
+page.subscribe((value) => {
+  if (value.url.pathname !== "/") {
+    isGameRunning.set(false);
+  }
+});
 
 export const heartRate = writable(80);
 export const heartRateHistory = writable([]);
