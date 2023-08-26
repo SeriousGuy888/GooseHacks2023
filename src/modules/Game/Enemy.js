@@ -21,15 +21,15 @@ export class Enemy {
 }
 
 export const enemies = Object.freeze({
-  slime: new Enemy(50, "slime", "basic", {
+  slime: new Enemy(100, "slime", "basic", {
     gold: 50,
     points: 1,
   }),
-  zombie: new Enemy(100, "zombie", "normal", {
+  zombie: new Enemy(200, "zombie", "normal", {
     gold: 100,
     points: 5,
   }),
-  robot: new Enemy(500, "robot", "boss", {
+  robot: new Enemy(1000, "robot", "boss", {
     gold: 1000,
     points: 10,
   }),
