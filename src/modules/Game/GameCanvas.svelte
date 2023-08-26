@@ -121,7 +121,7 @@
       // background-color: green;
       background-image: url("/sprites/player.png");
 
-      width: max(20%, 100px);
+      width: max(15%, 100px);
       aspect-ratio: 1;
 
       // Center horizontally
