@@ -12,7 +12,7 @@
       bind:value={$heartRate}
       min="10"
       max="220"
-      class="max-w-[3rem] px-2 py-1 rounded-sm"
+      class="max-w-[4rem] px-2 py-1 rounded-sm"
     />
     <br>
     <span class="text-sm">(for demo)</span>
