@@ -34,8 +34,9 @@
 </script>
 
 <div class="m-4 max-w-screen-lg grid gap-4">
-  <section>
-    <p>You have {$gold} gold to spend.</p>
+  <section class="mb-4">
+    <h1 class="text-2xl font-bold">Upgrades Shop</h1>
+    <p class="text-lg">You have <strong>{$gold}</strong> gold.</p>
   </section>
 
   <section class="grid gap-3">
