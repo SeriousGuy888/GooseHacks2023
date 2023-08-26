@@ -58,7 +58,7 @@
 </script>
 
 <article class="w-full h-full overflow-hidden">
-  <div class="absolute w-full h-full bg-white opacity-75" />
+  <div class="absolute w-full h-full bg-white opacity-40" />
 
   <section class="flex justify-center mt-8">
     <Healthbar health={enemyHealth} maxHealth={enemy.maxHealth} name={enemy.name} />
@@ -93,6 +93,7 @@
     background-image: url("/sprites/canvas_background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
   }
 
   #battlefield {
