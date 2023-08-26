@@ -80,7 +80,7 @@
     background-repeat: no-repeat;
 
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 100%;
 
     position: relative;
     overflow: clip;

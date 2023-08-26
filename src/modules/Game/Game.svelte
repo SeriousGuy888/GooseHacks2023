@@ -32,12 +32,12 @@
   $: secondsSinceStart = Math.floor((now - timeStarted) / 1000);
 </script>
 
-<section class="rounded-md overflow-clip grid gap-2">
+<section class="w-screen h-screen">
   {#if $isGameRunning}
     <GameCanvas bind:this={canvas} />
-    <HeartRateInput />
+    <!-- <HeartRateInput /> -->
   {:else}
-    <div class="p-4 bg-slate-300">
+    <div class="p-4">
       <button
         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
         on:click={startGame}
