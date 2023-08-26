@@ -1,6 +1,7 @@
 <script>
   import { gold, multipliers, points } from "$lib/store";
   import { Enemy, enemies } from "./Enemy";
+    import GameInfoDisplay from "./GameInfoDisplay.svelte";
   import Healthbar from "./Healthbar.svelte";
 
   /** @type {Enemy} */
@@ -72,6 +73,10 @@
       style="background-image: url('{enemy.getSpriteSrc()}');"
     />
     <div id="player" class="sprite" />
+  </section>
+
+  <section class="absolute left-4 bottom-4">
+    <GameInfoDisplay />
   </section>
 </article>
 

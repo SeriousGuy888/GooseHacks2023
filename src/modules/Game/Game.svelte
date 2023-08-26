@@ -1,6 +1,5 @@
 <script>
   import { heartRate, heartRateHistory, isGameRunning, points } from "$lib/store";
-  import HeartRateInput from "../../routes/HeartRateInput.svelte";
   import GameCanvas from "./GameCanvas.svelte";
   let timeStarted = 0;
 
