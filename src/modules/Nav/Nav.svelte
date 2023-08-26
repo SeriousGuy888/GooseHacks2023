@@ -1,8 +1,15 @@
 <script>
+  import { page } from "$app/stores";
   import { isGameRunning } from "$lib/store";
   import NavLink from "./NavLink.svelte";
 
   import { Home, ChevronUp } from "lucide-svelte";
+
+  page.subscribe((p) => {
+    if (p.url?.pathname !== "/") {
+      isGameRunning.set(false);
+    }
+  });
 </script>
 
 {#if $isGameRunning}
