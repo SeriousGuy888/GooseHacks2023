@@ -88,8 +88,6 @@
 
 <style lang="scss">
   article {
-    // background-color: white;
-    // from https://unsplash.com/photos/LhlxYMfnTF0
     background-image: url("/sprites/canvas_background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
