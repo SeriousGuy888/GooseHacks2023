@@ -1,7 +1,7 @@
 <script>
-  import { gold, multipliers, points } from "$lib/store";
+  import { gold, isGameRunning, multipliers, points } from "$lib/store";
   import { Enemy, enemies } from "./Enemy";
-    import GameInfoDisplay from "./GameInfoDisplay.svelte";
+  import GameInfoDisplay from "./GameInfoDisplay.svelte";
   import Healthbar from "./Healthbar.svelte";
 
   /** @type {Enemy} */
@@ -75,8 +75,14 @@
     <div id="player" class="sprite" />
   </section>
 
-  <section class="absolute left-4 bottom-4">
+  <section class="absolute inset-x-4 bottom-4 flex justify-between items-end">
     <GameInfoDisplay />
+    <button
+      class="px-4 py-2 bg-red-800 text-white rounded-md shadow-md"
+      on:click={() => isGameRunning.set(false)}
+    >
+      End Workout
+    </button>
   </section>
 </article>
 
