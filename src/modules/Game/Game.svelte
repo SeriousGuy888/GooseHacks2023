@@ -22,7 +22,10 @@
     $heartRateHistory = [...$heartRateHistory, $heartRate];
 
     if (canvas) {
-      const dmg = Math.round($heartRate / 10);
+      const lowHeartRate = $heartRate < 100;
+      const penaltyMultiplier = lowHeartRate ? 0.2 : 1;
+
+      const dmg = Math.round($heartRate / 10) * penaltyMultiplier;
       canvas.dealDamage(dmg);
     }
   }
