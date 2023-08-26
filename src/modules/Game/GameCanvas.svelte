@@ -5,7 +5,7 @@
   import Healthbar from "./Healthbar.svelte";
 
   /** @type {Enemy} */
-  let enemy = enemies.normal;
+  let enemy = enemies.zombie;
   let enemyHealth = enemy.maxHealth;
 
   let isEnemyDying = false;
@@ -136,7 +136,6 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    image-rendering: pixelated;
   }
 
   .death-animation {
