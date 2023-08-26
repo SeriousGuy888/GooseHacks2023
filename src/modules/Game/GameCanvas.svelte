@@ -56,7 +56,7 @@
   }
 </script>
 
-<article class="rounded-md">
+<article class="rounded-md z-50">
   <div class="absolute w-full h-full bg-white opacity-80" />
 
   <!-- https://learn.svelte.dev/tutorial/bind-this -->
