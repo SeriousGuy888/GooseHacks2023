@@ -31,7 +31,7 @@ export const upgrades = writable({
 export const multipliers = derived(upgrades, ($upgrades) => ({
   gold: Math.round((1 + $upgrades.gold * 0.1) * 10) / 10,
   damage: Math.round((1 + $upgrades.damage * 0.1) * 10) / 10,
-  critChance: Math.round((1 + $upgrades.critChance * 0.1) * 10) / 10,
+  critChance: Math.round((0 + $upgrades.critChance * 0.01) * 100) / 100,
 }));
 
 // Costs derived from upgrades

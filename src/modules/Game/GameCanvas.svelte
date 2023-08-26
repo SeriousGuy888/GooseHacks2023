@@ -1,5 +1,5 @@
 <script>
-  import { gold, points } from "$lib/store";
+  import { gold, multipliers, points } from "$lib/store";
   import { Enemy, enemies } from "./Enemy";
   import Healthbar from "./Healthbar.svelte";
 
@@ -17,7 +17,10 @@
       return;
     }
 
-    enemyHealth = Math.max(0, enemyHealth - damage);
+    const critBonus = Math.random() < $multipliers.critChance ? 2 : 1;
+    const trueDmg = Math.round(damage * $multipliers.damage) * critBonus;
+
+    enemyHealth = Math.max(0, enemyHealth - trueDmg);
 
     if (enemyHealth <= 0) {
       enemyDeath();
@@ -29,9 +32,9 @@
 
     // Add points and gold
     points.update((p) => p + drops.points);
-    gold.update((g) => g + drops.gold);
+    gold.update((g) => g + drops.gold * $multipliers.gold);
 
-    console.log(`Updated gold: ${drops.gold} ${$gold}`)
+    console.log(`Updated gold: ${drops.gold} ${$gold}`);
 
     // Play death animation
     isEnemyDying = true;
