@@ -20,7 +20,7 @@
     }}
   />
   <br />
-  <p>
+  <!-- <p>
     {$heartRateHistory.join(", ")}
-  </p>
+  </p> -->
 </section>
