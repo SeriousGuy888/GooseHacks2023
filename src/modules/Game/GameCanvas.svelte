@@ -1,5 +1,5 @@
 <script>
-  import { points } from "$lib/store";
+  import { gold, points } from "$lib/store";
   import { Enemy, enemies } from "./Enemy";
   import Healthbar from "./Healthbar.svelte";
 
@@ -25,8 +25,13 @@
   }
 
   function enemyDeath() {
-    // Add points
-    points.update((p) => p + 1);
+    const { drops } = enemy;
+
+    // Add points and gold
+    points.update((p) => p + drops.points);
+    gold.update((g) => g + drops.gold);
+
+    console.log(`Updated gold: ${drops.gold} ${$gold}`)
 
     // Play death animation
     isEnemyDying = true;

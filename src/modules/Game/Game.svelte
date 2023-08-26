@@ -1,5 +1,6 @@
 <script>
   import { heartRate, heartRateHistory, points } from "$lib/store";
+  import HeartRateInput from "../../routes/HeartRateInput.svelte";
   import GameCanvas from "./GameCanvas.svelte";
 
   let gameStarted = false;
@@ -33,12 +34,13 @@
   $: secondsSinceStart = Math.floor((now - timeStarted) / 1000);
 
   // TODO: remove this (for testing)
-  startGame();
+  // startGame();
 </script>
 
 <section class="rounded-md overflow-clip grid gap-2">
   {#if gameStarted}
     <GameCanvas bind:this={canvas} />
+    <HeartRateInput />
   {:else}
     <div class="p-4 bg-slate-300">
       <button
