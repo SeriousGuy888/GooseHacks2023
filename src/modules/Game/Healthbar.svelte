@@ -13,10 +13,10 @@
   }
 </script>
 
-<div id="healthbar-container">
+<div id="healthbar-container" class="z-10">
   <div class="grid grid-cols-2 select-none whitespace-nowrap">
     <span class="ml-4 uppercase font-bold tracking-wide opacity-75 text-left">{name}</span>
-    <span class="text-right">{health}/{maxHealth} HP</span>
+    <span class="text-right text-black">{health}/{maxHealth} HP</span>
   </div>
   <div id="healthbar">
     <div bind:this={healthbarContent} id="healthbar-content" />
@@ -25,18 +25,8 @@
 
 <style lang="scss">
   #healthbar-container {
-    position: relative;
-
-    // Place at top of screen
-    top: 2.5%;
-
-    // Center horizontally
-    left: 0;
-    right: 0;
-    margin: auto;
-
-    width: 50%;
-    height: 5%;
+    width: clamp(50%, 300px, 80%);
+    height: 2rem;
   }
 
   #healthbar {
