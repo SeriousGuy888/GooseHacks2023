@@ -1,6 +1,7 @@
 <script>
   import { gold, isGameRunning, multipliers, points } from "$lib/store";
   import { Enemy, enemies } from "./Enemy";
+  import FlyingText from "./FlyingText.svelte";
   import GameInfoDisplay from "./GameInfoDisplay.svelte";
   import Healthbar from "./Healthbar.svelte";
 
@@ -9,6 +10,7 @@
   let enemyHealth = enemy.maxHealth;
 
   let isEnemyDying = false;
+  let currTrueDmg = 0; // the amount of damage the enemy is currently taking
 
   /**
    * @param {number} damage
@@ -20,6 +22,9 @@
 
     const critBonus = Math.random() < $multipliers.critChance ? 2 : 1;
     const trueDmg = Math.round(damage * $multipliers.damage) * critBonus;
+
+    currTrueDmg = trueDmg;
+    setTimeout(() => (currTrueDmg = 0), 500);
 
     enemyHealth = Math.max(0, enemyHealth - trueDmg);
 
@@ -67,11 +72,15 @@
   <section id="battlefield">
     <div
       id="enemy"
-      class="sprite"
+      class="sprite relative"
       class:death-animation={isEnemyDying}
       class:floating-animation={!isEnemyDying}
       style="background-image: url('{enemy.getSpriteSrc()}');"
-    />
+    >
+      {#if currTrueDmg}
+        <FlyingText text={currTrueDmg.toString()} />
+      {/if}
+    </div>
     <div id="player" class="sprite" />
   </section>
 
