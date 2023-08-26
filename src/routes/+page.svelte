@@ -1,13 +1,10 @@
 <script>
   import { onMount } from "svelte";
   import Game from "../modules/Game/Game.svelte";
-  import { page } from "$app/stores";
   import { browser } from "$app/environment";
 
-  if (browser) {
-    if (!window.DeviceOrientationEvent) {
-      console.log("DeviceOrientationEvent not supported.");
-    } else {
+  onMount(() => {
+    if (browser && window.DeviceOrientationEvent) {
       // @ts-ignore
       const gyroscope = new Gyroscope({ frequency: 60 });
 
@@ -19,7 +16,7 @@
 
       gyroscope.start();
     }
-  }
+  });
 </script>
 
 <Game />
